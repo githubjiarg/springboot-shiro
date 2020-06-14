@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.login.mapper.UserMapper">
+
+    <select id="queryUser" parameterType="java.lang.String" resultType="com.spring.login.model.UserInfoBean">
+        SELECT t.id         id,
+               t.user_name  username,
+               t.password   password,
+               t.salt       salt
+         FROM my_user t
+         where t.user_name = #{userName}
+    </select>
+
+    <insert id="insertUser" parameterType="com.spring.login.model.UserInfoBean">
+        insert into my_user (
+          id,
+          user_name,
+          password,
+          salt,
+          create_time
+        ) values(
+          #{id},
+          #{userName},
+          #{password},
+          #{salt},
+          #{createTime}
+        )
+    </insert>
+</mapper>
