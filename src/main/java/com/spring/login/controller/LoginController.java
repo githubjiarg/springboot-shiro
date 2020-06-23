@@ -60,7 +60,7 @@ public class LoginController {
      *  退出登录
      * @return
      */
-    @PostMapping(value = "logout")
+    @RequestMapping(value = "logout")
     public String logout(){
         Subject subject = SecurityUtils.getSubject();
         try {

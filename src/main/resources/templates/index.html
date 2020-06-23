@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
     <meta charset="UTF-8">
     <title>主页</title>
@@ -8,20 +9,46 @@
     <div style="text-align: center; padding-top: 150px;">
         <div>
             <h3>欢迎登录</h3>
-
+            <span>姓名:</span>
+            <span shiro:principal=""></span>
         </div>
-        <div>
+        <div style="display: inline-block;">
             <div>
-                <form method="post" action="/register">
+                <form method="post" th:action="@{/register}">
                     <input type="submit" value="账号注册">
                 </form>
             </div>
             <div style="padding-top: 20px;">
-                <form method="post" action="/sys/logout">
-                    <input type="submit" value="退出登陆">
-                </form>
+                <a th:href="@{/sys/logout}">退出登陆</a>
             </div>
+        </div>
+        <div style="padding-top: 20px;">
+            <form>
+                <input type="file" name="file" id="file">
+                <input type="button" value="上传文件" onclick="upload_file();">
+            </form>
         </div>
     </div>
 </body>
+<script type="text/javascript" src="/js/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+<script>
+    let basePath = window.location.origin;
+    function upload_file(){
+        let formDate = new FormData();
+        formDate.append("fileName","用户信息");
+        formDate.append("dateTime",new Date().getTime().toString());
+        formDate.append("file",$("#file")[0].files[0]);
+        $.ajax({
+            url: basePath + "/file/upload",
+            type:"POST",
+            data:formDate,
+            cache: false,
+            processData: false,  //不使用默认序列化
+            contentType: false,  //不使用默认数据格式化
+            success:function(result){
+
+            }
+        });
+    }
+</script>
 </html>

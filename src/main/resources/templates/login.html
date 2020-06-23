@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>登录</title>
 </head>
 <body>
     <div style="text-align: center; padding-top: 200px;">
-        <form method="post" action="/sys/login">
+        <form method="post" th:action="@{/sys/login}">
             <div style="padding: 10px 0;">
                 账号 <input type="text" name="userName" autocomplete="off">
             </div>

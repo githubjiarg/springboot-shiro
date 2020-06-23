@@ -8,12 +8,12 @@
                t.user_name  username,
                t.password   password,
                t.salt       salt
-         FROM my_user t
+         FROM sys_user t
          where t.user_name = #{userName}
     </select>
 
     <insert id="insertUser" parameterType="com.spring.login.model.UserInfoBean">
-        insert into my_user (
+        insert into sys_user (
           id,
           user_name,
           password,

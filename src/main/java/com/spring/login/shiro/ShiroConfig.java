@@ -1,5 +1,6 @@
 package com.spring.login.shiro;
 
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,6 +29,11 @@ import java.util.Map;
  */
 @Configuration
 public class ShiroConfig {
+
+    @Bean
+    public ShiroDialect shiroDialect(){
+        return new ShiroDialect();
+    }
 
     /**
      *  账户认证
@@ -77,6 +83,7 @@ public class ShiroConfig {
         Map<String,String> filterMap = new LinkedHashMap<>();
         filterMap.put("/logout","logout");
         filterMap.put("/sys/login","anon");
+        filterMap.put("/static/**","anon");
         filterMap.put("/**","authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
         return shiroFilterFactoryBean;
