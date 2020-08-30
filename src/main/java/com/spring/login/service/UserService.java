@@ -30,7 +30,7 @@ public class UserService {
      * @param userInfoBean
      */
     public void register(UserInfoBean userInfoBean){
-        userInfoBean.setId(UUID.randomUUID().toString().replaceAll("-",""));
+        userInfoBean.setUserId(UUID.randomUUID().toString().replaceAll("-",""));
         userInfoBean.setSalt(Md5Util.getSal());
         userInfoBean.setPassword(Md5Util.encryptPwd(userInfoBean.getPassword(),userInfoBean.getSalt()));
         userInfoBean.setCreateTime(new Date());

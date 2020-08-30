@@ -12,7 +12,7 @@ import java.util.Date;
 public class UserInfoBean implements Serializable {
 
     // 用户ID
-    private String id;
+    private String userId;
 
     // 用户名
     private String userName;

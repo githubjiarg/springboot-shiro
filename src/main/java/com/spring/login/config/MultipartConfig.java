@@ -7,8 +7,6 @@ import org.springframework.util.unit.DataSize;
 
 import javax.servlet.MultipartConfigElement;
 
-import static com.sun.deploy.util.BufferUtil.MB;
-
 @Configuration
 public class MultipartConfig{
 

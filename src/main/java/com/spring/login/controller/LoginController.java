@@ -7,15 +7,22 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import redis.clients.jedis.Jedis;
 
 import javax.annotation.Resource;
 
 @Controller
 @RequestMapping("sys")
 public class LoginController {
+
+    @Autowired
+    private RedisTemplate<String,Object> redisTemplate;
 
     @Resource
     private UserService userService;
@@ -32,6 +39,7 @@ public class LoginController {
         // 密码加密处理
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(userName,password);
         try {
+            redisTemplate.opsForValue().set("jack","123456");
             subject.login(usernamePasswordToken);
         } catch (UnknownAccountException e){
             System.out.println("----------- 账户不存在 -----------");
