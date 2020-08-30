@@ -8,12 +8,11 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import redis.clients.jedis.Jedis;
 
 import javax.annotation.Resource;
 
@@ -34,7 +33,7 @@ public class LoginController {
      * @return
      */
     @PostMapping(value = "login")
-    public String login(String userName,String password){
+    public String login(String userName, String password, Model model){
         Subject subject = SecurityUtils.getSubject();
         // 密码加密处理
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(userName,password);
@@ -43,12 +42,15 @@ public class LoginController {
             subject.login(usernamePasswordToken);
         } catch (UnknownAccountException e){
             System.out.println("----------- 账户不存在 -----------");
-            return "redirect:/login";
+            model.addAttribute("msg","账号错误");
+            return "login";
         } catch (IncorrectCredentialsException e){
             System.out.println("----------- 密码错误 -----------");
-            return "redirect:/login";
+            model.addAttribute("msg","密码错误");
+            // 返回login请求
+            return "login";
         }
-        // 登录成功
+        // 登录成功，返回index页面
         System.out.println("----------- 登录成功 -----------");
         return "index";
     }

@@ -4,9 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <title>主页</title>
+    <style>
+        div>ul>ul>li{
+            display: inline-block;
+        }
+        div>ul>li{
+            margin-top: 20px;
+        }
+        div>ul>ul{
+            border: 1px solid #dddddd;
+            padding-inline-start: 0;
+            margin-inline-start: 40px;
+        }
+    </style>
 </head>
 <body>
-    <div style="text-align: center; padding-top: 150px;">
+    <div style="padding:20px 0 0 50px; float: left;">
         <div>
             <h3>欢迎登录</h3>
             <span>姓名:</span>
@@ -24,10 +37,95 @@
         </div>
         <div style="padding-top: 20px;">
             <form>
-                <input type="file" name="file" id="file">
-                <input type="button" value="上传文件" onclick="upload_file();">
+                <p>
+                    <input type="file" name="file" id="file">
+                </p>
+                <p>
+                    <input type="button" value="上传文件" onclick="upload_file();">
+                </p>
             </form>
         </div>
+    </div>
+
+    <div style="padding: 20px 0 0 50px; float: left;">
+        <h3>菜单列表：</h3>
+        <ul>
+            <li>系统管理</li>
+            <ul>
+                <li>
+                    <a href="/system/import">导入</a>
+                </li>
+                <li>
+                    <a href="/system/delete">删除</a>
+                </li>
+                <li>
+                    <a href="/system/update">修改</a>
+                </li>
+                <li>
+                    <a href="/system/select">查询</a>
+                </li>
+            </ul>
+            <li>教师管理</li>
+            <ul>
+                <li>新增</li>
+                <li>导出</li>
+                <li>修改</li>
+                <li>删除</li>
+            </ul>
+            <li>学生管理</li>
+            <ul>
+                <li>新增</li>
+                <li>删除</li>
+                <li>修改</li>
+                <li>删除</li>
+            </ul>
+            <li>班级管理</li>
+            <ul>
+                <li>新增</li>
+                <li>删除</li>
+                <li>修改</li>
+                <li>删除</li>
+            </ul>
+            <li>缴费中心</li>
+            <ul>
+                <li>新增</li>
+                <li>删除</li>
+                <li>修改</li>
+                <li>删除</li>
+            </ul>
+            <li>试卷管理</li>
+            <ul>
+                <li>新增</li>
+                <li>删除</li>
+                <li>修改</li>
+                <li>删除</li>
+            </ul>
+            <li>个人创作</li>
+            <ul>
+                <li>新增</li>
+                <li>删除</li>
+                <li>修改</li>
+                <li>删除</li>
+            </ul>
+            <li>作业管理</li>
+            <ul>
+                <li>新增</li>
+                <li>删除</li>
+                <li>修改</li>
+                <li>删除</li>
+            </ul>
+            <li>帮助</li>
+            <ul>
+                <li>新增</li>
+                <li>删除</li>
+                <li>修改</li>
+                <li>删除</li>
+                <li>批量删除</li>
+                <li>导入</li>
+                <li>导出</li>
+                <li>启用</li>
+            </ul>
+        </ul>
     </div>
 </body>
 <script type="text/javascript" src="/js/jquery-3.4.1/jquery-3.4.1.min.js"></script>

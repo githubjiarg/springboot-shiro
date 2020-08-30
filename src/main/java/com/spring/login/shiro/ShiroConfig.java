@@ -17,8 +17,13 @@ import java.util.Map;
 @Configuration
 public class ShiroConfig {
 
+    /**
+     *  支持thymeleaf标签
+     * @return
+     */
     @Bean
     public ShiroDialect shiroDialect(){
+
         return new ShiroDialect();
     }
 
@@ -66,7 +71,7 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setLoginUrl("/login");
         shiroFilterFactoryBean.setSuccessUrl("/index");
         shiroFilterFactoryBean.setUnauthorizedUrl("/unRole");
-        // 指定权限过滤
+        // 指定权限过滤： 静态资源放行，其他资源校验拦截
         Map<String,String> filterMap = new LinkedHashMap<>();
         filterMap.put("/logout","logout");
         filterMap.put("/sys/login","anon");

@@ -1,8 +1,10 @@
 package com.spring.login.shiro;
 
 import com.spring.login.model.UserInfoBean;
+import com.spring.login.model.UserRoleBean;
 import com.spring.login.service.UserService;
 import com.spring.login.utils.Md5Util;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -10,11 +12,15 @@ import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.ByteSource;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 自定义账号,权限验证
@@ -31,8 +37,22 @@ public class MyRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        System.out.println("------------------ 权限认证 ----------------------");
-        return null;
+        System.out.println("----------- 权限认证 -----------");
+        SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
+        // 获取用户信息
+        Subject subject = SecurityUtils.getSubject();
+        List<String> permissionList = new ArrayList<>();
+        UserInfoBean userInfoBean = userService.queryUser((String) subject.getPrincipal());
+        // 查询用户角色
+        List<UserRoleBean> roleList = userService.queryUserRoles(userInfoBean.getUserId());
+        for ( UserRoleBean roleBean : roleList) {
+            simpleAuthorizationInfo.addRole(roleBean.getRoleName());
+            permissionList = userService.queryRoleRemission(roleBean.getRoleId());
+            for (String permission : permissionList) {
+                simpleAuthorizationInfo.addStringPermission(permission);
+            }
+        }
+        return simpleAuthorizationInfo;
     }
 
     /**

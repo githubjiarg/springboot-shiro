@@ -4,12 +4,28 @@
 <mapper namespace="com.spring.login.mapper.UserMapper">
 
     <select id="queryUser" parameterType="java.lang.String" resultType="com.spring.login.model.UserInfoBean">
-        SELECT user_id         useid,
+        SELECT user_id    userid,
                user_name  username,
                password   password,
                salt       salt
          FROM sys_user
          where user_name = #{userName}
+    </select>
+
+    <select id="queryUserRoles" parameterType="java.lang.String" resultType="com.spring.login.model.UserRoleBean">
+        select distinct
+               t.role_id   roleid,
+               t2.role_name rolename
+        from sys_user_role t inner join sys_role t2
+          on t.role_id = t2.role_id
+        where t.user_id = #{userId}
+    </select>
+
+    <select id="queryRoleRemission" parameterType="java.lang.String" resultType="java.lang.String">
+        select t2.auth_name
+        from sys_role_auth t inner join sys_menu_button t2
+          on t.auth_id = t2.btn_id
+       where t.role_id = #{roleId}
     </select>
 
     <insert id="insertUser" parameterType="com.spring.login.model.UserInfoBean">

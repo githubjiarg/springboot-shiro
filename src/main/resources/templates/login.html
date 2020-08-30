@@ -6,6 +6,10 @@
 </head>
 <body>
     <div style="text-align: center; padding-top: 200px;">
+        <div>
+            <span>信息提示：</span>
+            <span th:text="${msg}"></span>
+        </div>
         <form method="post" th:action="@{/sys/login}">
             <div style="padding: 10px 0;">
                 账号 <input type="text" name="userName" autocomplete="off">
