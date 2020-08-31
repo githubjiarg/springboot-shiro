@@ -22,10 +22,10 @@
     </select>
 
     <select id="queryRoleRemission" parameterType="java.lang.String" resultType="java.lang.String">
-        select t2.auth_name
-        from sys_role_auth t inner join sys_menu_button t2
-          on t.auth_id = t2.btn_id
-       where t.role_id = #{roleId}
+        select t2.permission_name
+          from sys_role_auth t1 ,sys_auth t2
+         where t1.auth_id = t2.auth_id
+           and t1.role_id = #{roleId}
     </select>
 
     <insert id="insertUser" parameterType="com.spring.login.model.UserInfoBean">

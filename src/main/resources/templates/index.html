@@ -50,80 +50,80 @@
     <div style="padding: 20px 0 0 50px; float: left;">
         <h3>菜单列表：</h3>
         <ul>
-            <li>系统管理</li>
+            <li shiro:hasPermission="system:view">系统管理</li>
             <ul>
-                <li>
+                <li shiro:hasPermission="system:import">
                     <a href="/system/import">导入</a>
                 </li>
-                <li>
+                <li shiro:hasPermission="system:delete">
                     <a href="/system/delete">删除</a>
                 </li>
-                <li>
+                <li shiro:hasPermission="system:update">
                     <a href="/system/update">修改</a>
                 </li>
-                <li>
+                <li shiro:hasPermission="system:select">
                     <a href="/system/select">查询</a>
                 </li>
             </ul>
-            <li>教师管理</li>
+            <li shiro:hasPermission="teacher:view">教师管理</li>
             <ul>
-                <li>新增</li>
-                <li>导出</li>
-                <li>修改</li>
-                <li>删除</li>
+                <li shiro:hasPermission="teacher:insert">新增</li>
+                <li shiro:hasPermission="teacher:export">导出</li>
+                <li shiro:hasPermission="teacher:select">查询</li>
+                <li shiro:hasPermission="teacher:update">编辑</li>
             </ul>
-            <li>学生管理</li>
+            <li shiro:hasPermission="student:view">学生管理</li>
             <ul>
-                <li>新增</li>
-                <li>删除</li>
-                <li>修改</li>
-                <li>删除</li>
+                <li shiro:hasPermission="student:insert">新增</li>
+                <li shiro:hasPermission="student:delete">删除</li>
+                <li shiro:hasPermission="student:select">查询</li>
+                <li shiro:hasPermission="student:update">编辑</li>
             </ul>
-            <li>班级管理</li>
+            <li shiro:hasPermission="class:view">班级管理</li>
             <ul>
-                <li>新增</li>
-                <li>删除</li>
-                <li>修改</li>
-                <li>删除</li>
+                <li shiro:hasPermission="class:insert">新增</li>
+                <li shiro:hasPermission="class:delete">删除</li>
+                <li shiro:hasPermission="class:select">查询</li>
+                <li shiro:hasPermission="class:update">修改</li>
             </ul>
-            <li>缴费中心</li>
+            <li shiro:hasPermission="pay:view">缴费中心</li>
             <ul>
-                <li>新增</li>
-                <li>删除</li>
-                <li>修改</li>
-                <li>删除</li>
+                <li shiro:hasPermission="pay:insert">新增</li>
+                <li shiro:hasPermission="pay:delete">删除</li>
+                <li shiro:hasPermission="pay:select">查询</li>
+                <li shiro:hasPermission="pay:update">修改</li>
             </ul>
-            <li>试卷管理</li>
+            <li shiro:hasPermission="testpaper:view">试卷管理</li>
             <ul>
-                <li>新增</li>
-                <li>删除</li>
-                <li>修改</li>
-                <li>删除</li>
+                <li shiro:hasPermission="testpaper:insert">新增</li>
+                <li shiro:hasPermission="testpaper:delete">删除</li>
+                <li shiro:hasPermission="testpaper:select">查询</li>
+                <li shiro:hasPermission="testpaper:update">修改</li>
             </ul>
-            <li>个人创作</li>
+            <li shiro:hasPermission="works:view">个人创作</li>
             <ul>
-                <li>新增</li>
-                <li>删除</li>
-                <li>修改</li>
-                <li>删除</li>
+                <li shiro:hasPermission="works:insert">新增</li>
+                <li shiro:hasPermission="works:delete">删除</li>
+                <li shiro:hasPermission="works:select">查询</li>
+                <li shiro:hasPermission="works:update">修改</li>
             </ul>
-            <li>作业管理</li>
+            <li shiro:hasPermission="operate:view">作业管理</li>
             <ul>
-                <li>新增</li>
-                <li>删除</li>
-                <li>修改</li>
-                <li>删除</li>
+                <li shiro:hasPermission="operate:insert">新增</li>
+                <li shiro:hasPermission="operate:delete">删除</li>
+                <li shiro:hasPermission="operate:select">查询</li>
+                <li shiro:hasPermission="operate:update">修改</li>
             </ul>
-            <li>帮助</li>
+            <li shiro:hasPermission="help:view">帮助</li>
             <ul>
-                <li>新增</li>
-                <li>删除</li>
-                <li>修改</li>
-                <li>删除</li>
-                <li>批量删除</li>
-                <li>导入</li>
-                <li>导出</li>
-                <li>启用</li>
+                <li shiro:hasPermission="help:insert">新增</li>
+                <li shiro:hasPermission="help:delete">删除</li>
+                <li shiro:hasPermission="help:select">查询</li>
+                <li shiro:hasPermission="help:update">修改</li>
+                <li shiro:hasPermission="help:deleteall">批量删除</li>
+                <li shiro:hasPermission="help:import">导入</li>
+                <li shiro:hasPermission="help:export">导出</li>
+                <li shiro:hasPermission="help:enable">启用</li>
             </ul>
         </ul>
     </div>

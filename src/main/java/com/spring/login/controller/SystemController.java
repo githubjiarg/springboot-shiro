@@ -18,7 +18,7 @@ public class SystemController {
      * @return
      */
     @RequestMapping("import")
-    @RequiresPermissions("user:import")
+    @RequiresPermissions("system:import")
     public Map<String,String> importExcel(){
         Map<String,String> map = new HashMap<String,String>(3);
         log.info("SystemController-import");
@@ -30,7 +30,7 @@ public class SystemController {
      * @return
      */
     @RequestMapping("delete")
-    @RequiresPermissions("user:delete")
+    @RequiresPermissions("system:delete")
     public Map<String,String> delete(){
         Map<String,String> map = new HashMap<String,String>(3);
         log.info("SystemController-delete");
@@ -42,7 +42,7 @@ public class SystemController {
      * @return
      */
     @RequestMapping("update")
-    @RequiresPermissions("user:update")
+    @RequiresPermissions("system:update")
     public Map<String,String> update(){
         Map<String,String> map = new HashMap<String,String>(3);
         log.info("SystemController-update");
@@ -54,7 +54,7 @@ public class SystemController {
      * @return
      */
     @RequestMapping("select")
-    @RequiresPermissions("user:select")
+    @RequiresPermissions("system:select")
     public Map<String,String> select(){
         Map<String,String> map = new HashMap<String,String>(3);
         log.info("SystemController-select");
